@@ -4,22 +4,56 @@ import {ListView, View, TouchableOpacity, Image, StyleSheet} from 'react-native'
 import {actions} from './const';
 
 const defaultActions = [
-  actions.insertImage,
   actions.setBold,
   actions.setItalic,
   actions.insertBulletsList,
   actions.insertOrderedList,
-  actions.insertLink
+  actions.setUnderline,
+  actions.heading1,
+  actions.heading2,
+  actions.heading3,
+  actions.heading4,
+  actions.heading5,
+  actions.heading6,
+  actions.setParagraph,
+  actions.removeFormat,
+  actions.alignLeft,
+  actions.alignCenter,
+  actions.alignRight,
+  actions.alignFull,
+  actions.setSubscript,
+  actions.setSuperscript,
+  actions.setStrikethrough,
+  actions.setHR,
+  actions.setIndent,
+  actions.setOutdent,
 ];
 
 function getDefaultIcon() {
   const texts = {};
-  texts[actions.insertImage] = require('../img/icon_format_media.png');
-  texts[actions.setBold] = require('../img/icon_format_bold.png');
-  texts[actions.setItalic] = require('../img/icon_format_italic.png');
-  texts[actions.insertBulletsList] = require('../img/icon_format_ul.png');
-  texts[actions.insertOrderedList] = require('../img/icon_format_ol.png');
-  texts[actions.insertLink] = require('../img/icon_format_link.png');
+  texts[actions.setBold] = require('../img/ZSSbold.png');
+  texts[actions.setItalic] = require('../img/ZSSitalic.png');
+  texts[actions.insertBulletsList] = require('../img/ZSSunorderedlist.png');
+  texts[actions.insertOrderedList] = require('../img/ZSSorderedlist.png');
+  texts[actions.setUnderline] = require('../img/ZSSunderline.png');
+  texts[actions.heading1] = require('../img/ZSSh1.png');
+  texts[actions.heading2] = require('../img/ZSSh2.png');
+  texts[actions.heading3] = require('../img/ZSSh3.png');
+  texts[actions.heading4] = require('../img/ZSSh4.png');
+  texts[actions.heading5] = require('../img/ZSSh5.png');
+  texts[actions.heading6] = require('../img/ZSSh6.png');
+  texts[actions.setParagraph] = require('../img/ZSSparagraph.png');
+  texts[actions.removeFormat] = require('../img/ZSSclearstyle.png');
+  texts[actions.alignLeft] = require('../img/ZSSleftjustify.png');
+  texts[actions.alignCenter] = require('../img/ZSScenterjustify.png');
+  texts[actions.alignRight] = require('../img/ZSSrightjustify.png');
+  texts[actions.alignFull] = require('../img/ZSSforcejustify.png');
+  texts[actions.setSubscript] = require('../img/ZSSsubscript.png');
+  texts[actions.setSuperscript] = require('../img/ZSSsuperscript.png');
+  texts[actions.setStrikethrough] = require('../img/ZSSstrikethrough.png');
+  texts[actions.setHR] = require('../img/ZSShorizontalrule.png');
+  texts[actions.setIndent] = require('../img/ZSSindent.png');
+  texts[actions.setOutdent] = require('../img/ZSSoutdent.png');
   return texts;
 }
 
@@ -50,7 +84,7 @@ export default class RichTextToolbar extends Component {
     };
   }
 
-  componentDidReceiveProps(newProps) {
+  componentWillReceiveProps(newProps) {
     const actions = newProps.actions ? newProps.actions : defaultActions;
     this.setState({
       actions,

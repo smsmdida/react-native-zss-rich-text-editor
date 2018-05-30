@@ -79,10 +79,12 @@ export default class RichTextEditor extends Component {
       this.setEditorAvailableHeightBasedOnKeyboardHeight(newKeyboardHeight);
     }
     this.setState({keyboardHeight: newKeyboardHeight});
+    this.props.keyboardShowed && this.props.keyboardShowed(event)
   }
 
   _onKeyboardWillHide(event) {
     this.setState({keyboardHeight: 0});
+    this.props.keyboardClosed && this.props.keyboardClosed(event)
   }
 
   setEditorAvailableHeightBasedOnKeyboardHeight(keyboardHeight) {
@@ -90,7 +92,7 @@ export default class RichTextEditor extends Component {
     const {marginTop = 0, marginBottom = 0} = this.props.style;
     const spacing = marginTop + marginBottom + top + bottom;
 
-    const editorAvailableHeight = Dimensions.get('window').height - keyboardHeight - spacing;
+    const editorAvailableHeight = Dimensions.get('window').height - keyboardHeight*2 - spacing;
     this.setEditorHeight(editorAvailableHeight);
   }
 
@@ -296,8 +298,8 @@ export default class RichTextEditor extends Component {
       <View style={{flex: 1}}>
         <WebViewBridge
           {...this.props}
-          hideKeyboardAccessoryView={true}
-          keyboardDisplayRequiresUserAction={false}
+          //hideKeyboardAccessoryView={true}
+          //keyboardDisplayRequiresUserAction={false}
           ref={(r) => {this.webviewBridge = r}}
           onBridgeMessage={(message) => this.onBridgeMessage(message)}
           injectedJavaScript={injectScript}
