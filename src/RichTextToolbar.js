@@ -9,6 +9,7 @@ const defaultActions = [
   actions.insertBulletsList,
   actions.insertOrderedList,
   actions.setUnderline,
+  actions.insertLink,
   actions.heading1,
   actions.heading2,
   actions.heading3,
@@ -54,6 +55,7 @@ function getDefaultIcon() {
   texts[actions.setHR] = require('../img/ZSShorizontalrule.png');
   texts[actions.setIndent] = require('../img/ZSSindent.png');
   texts[actions.setOutdent] = require('../img/ZSSoutdent.png');
+  texts[actions.insertLink] = require('../img/ZSSlink.png');
   return texts;
 }
 
